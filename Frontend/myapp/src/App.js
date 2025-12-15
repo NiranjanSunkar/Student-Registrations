@@ -19,7 +19,7 @@ function App() {
   ========================= */
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/students");
+      const res = await axios.get("https://student-registrations-backend.onrender.com/api/students");
       setStudents(res.data);
     } catch (error) {
       console.error("Error fetching students:", error);
@@ -47,7 +47,7 @@ function App() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/students", {
+      await axios.post("https://student-registrations-backend.onrender.com/api/students", {
         ...formData,
         year: Number(formData.year) // important
       });
@@ -77,7 +77,7 @@ const deleteStudent = async (id) => {
   if (!window.confirm("Are you sure you want to delete this student?")) return;
 
   try {
-    await axios.delete(`http://localhost:5000/api/students/${id}`);
+    await axios.delete(`https://student-registrations-backend.onrender.com/api/students/${id}`);
     fetchStudents(); // refresh table
   } catch (error) {
     console.error("Error deleting student:", error);
